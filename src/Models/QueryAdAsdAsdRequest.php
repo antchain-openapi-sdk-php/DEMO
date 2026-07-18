@@ -1,13 +1,70 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace AntChain\DEMO\Models;
 
 use AlibabaCloud\Tea\Model;
 
-class QueryAdAsdAsdRequest extends Model
-{
+use AntChain\DEMO\Models\CardInfo;
+use AntChain\DEMO\Models\DemoClass;
+
+class QueryAdAsdAsdRequest extends Model {
+    protected $_name = [
+        'authToken' => 'auth_token',
+        'productInstanceId' => 'product_instance_id',
+        'bnumber' => 'bnumber',
+        'cardInfo' => 'card_info',
+        'demoClass' => 'demo_class',
+    ];
+    public function validate() {
+        Model::validateRequired('bnumber', $this->bnumber, true);
+        Model::validateRequired('cardInfo', $this->cardInfo, true);
+        Model::validateRequired('demoClass', $this->demoClass, true);
+        Model::validateMaxLength('bnumber', $this->bnumber, 2);
+        Model::validateMinLength('bnumber', $this->bnumber, 1);
+    }
+    public function toMap() {
+        $res = [];
+        if (null !== $this->authToken) {
+            $res['auth_token'] = $this->authToken;
+        }
+        if (null !== $this->productInstanceId) {
+            $res['product_instance_id'] = $this->productInstanceId;
+        }
+        if (null !== $this->bnumber) {
+            $res['bnumber'] = $this->bnumber;
+        }
+        if (null !== $this->cardInfo) {
+            $res['card_info'] = null !== $this->cardInfo ? $this->cardInfo->toMap() : null;
+        }
+        if (null !== $this->demoClass) {
+            $res['demo_class'] = null !== $this->demoClass ? $this->demoClass->toMap() : null;
+        }
+        return $res;
+    }
+    /**
+     * @param array $map
+     * @return QueryAdAsdAsdRequest
+     */
+    public static function fromMap($map = []) {
+        $model = new self();
+        if(isset($map['auth_token'])){
+            $model->authToken = $map['auth_token'];
+        }
+        if(isset($map['product_instance_id'])){
+            $model->productInstanceId = $map['product_instance_id'];
+        }
+        if(isset($map['bnumber'])){
+            $model->bnumber = $map['bnumber'];
+        }
+        if(isset($map['card_info'])){
+            $model->cardInfo = CardInfo::fromMap($map['card_info']);
+        }
+        if(isset($map['demo_class'])){
+            $model->demoClass = DemoClass::fromMap($map['demo_class']);
+        }
+        return $model;
+    }
     // OAuth模式下的授权token
     /**
      * @var string
@@ -30,61 +87,11 @@ class QueryAdAsdAsdRequest extends Model
      * @var CardInfo
      */
     public $cardInfo;
-    protected $_name = [
-        'authToken'         => 'auth_token',
-        'productInstanceId' => 'product_instance_id',
-        'bnumber'           => 'bnumber',
-        'cardInfo'          => 'card_info',
-    ];
 
-    public function validate()
-    {
-        Model::validateRequired('bnumber', $this->bnumber, true);
-        Model::validateRequired('cardInfo', $this->cardInfo, true);
-        Model::validateMaxLength('bnumber', $this->bnumber, 2);
-        Model::validateMinLength('bnumber', $this->bnumber, 1);
-    }
-
-    public function toMap()
-    {
-        $res = [];
-        if (null !== $this->authToken) {
-            $res['auth_token'] = $this->authToken;
-        }
-        if (null !== $this->productInstanceId) {
-            $res['product_instance_id'] = $this->productInstanceId;
-        }
-        if (null !== $this->bnumber) {
-            $res['bnumber'] = $this->bnumber;
-        }
-        if (null !== $this->cardInfo) {
-            $res['card_info'] = null !== $this->cardInfo ? $this->cardInfo->toMap() : null;
-        }
-
-        return $res;
-    }
-
+    // 123
     /**
-     * @param array $map
-     *
-     * @return QueryAdAsdAsdRequest
+     * @var DemoClass
      */
-    public static function fromMap($map = [])
-    {
-        $model = new self();
-        if (isset($map['auth_token'])) {
-            $model->authToken = $map['auth_token'];
-        }
-        if (isset($map['product_instance_id'])) {
-            $model->productInstanceId = $map['product_instance_id'];
-        }
-        if (isset($map['bnumber'])) {
-            $model->bnumber = $map['bnumber'];
-        }
-        if (isset($map['card_info'])) {
-            $model->cardInfo = CardInfo::fromMap($map['card_info']);
-        }
+    public $demoClass;
 
-        return $model;
-    }
 }

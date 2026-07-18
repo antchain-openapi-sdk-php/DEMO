@@ -1,56 +1,13 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace AntChain\DEMO\Models;
 
 use AlibabaCloud\Tea\Model;
 
-/**
- * @internal
- * @coversNothing
- */
-class NumberTest extends Model
-{
-    // 1
-    /**
-     * @example 1
-     *
-     * @var int
-     */
-    public $parameter1;
+use AntChain\DEMO\Models\DemoClass;
 
-    // 2
-    /**
-     * @example 2
-     *
-     * @var int
-     */
-    public $parameter2;
-
-    // 3
-    /**
-     * @example 3
-     *
-     * @var int
-     */
-    public $parameter3;
-
-    // 4
-    /**
-     * @example 4
-     *
-     * @var int
-     */
-    public $parameter4;
-
-    // 5
-    /**
-     * @example 5
-     *
-     * @var DemoClass
-     */
-    public $parameter5;
+class NumberTest extends Model {
     protected $_name = [
         'parameter1' => 'parameter_1',
         'parameter2' => 'parameter_2',
@@ -58,9 +15,7 @@ class NumberTest extends Model
         'parameter4' => 'parameter_4',
         'parameter5' => 'parameter_5',
     ];
-
-    public function validate()
-    {
+    public function validate() {
         Model::validateRequired('parameter1', $this->parameter1, true);
         Model::validateRequired('parameter2', $this->parameter2, true);
         Model::validateRequired('parameter3', $this->parameter3, true);
@@ -75,9 +30,7 @@ class NumberTest extends Model
         Model::validateMinimum('parameter3', $this->parameter3, 1);
         Model::validateMinimum('parameter4', $this->parameter4, 1);
     }
-
-    public function toMap()
-    {
+    public function toMap() {
         $res = [];
         if (null !== $this->parameter1) {
             $res['parameter_1'] = $this->parameter1;
@@ -94,34 +47,64 @@ class NumberTest extends Model
         if (null !== $this->parameter5) {
             $res['parameter_5'] = null !== $this->parameter5 ? $this->parameter5->toMap() : null;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return NumberTest
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['parameter_1'])) {
+        if(isset($map['parameter_1'])){
             $model->parameter1 = $map['parameter_1'];
         }
-        if (isset($map['parameter_2'])) {
+        if(isset($map['parameter_2'])){
             $model->parameter2 = $map['parameter_2'];
         }
-        if (isset($map['parameter_3'])) {
+        if(isset($map['parameter_3'])){
             $model->parameter3 = $map['parameter_3'];
         }
-        if (isset($map['parameter_4'])) {
+        if(isset($map['parameter_4'])){
             $model->parameter4 = $map['parameter_4'];
         }
-        if (isset($map['parameter_5'])) {
+        if(isset($map['parameter_5'])){
             $model->parameter5 = DemoClass::fromMap($map['parameter_5']);
         }
-
         return $model;
     }
+    // 1
+    /**
+     * @example 1
+     * @var int
+     */
+    public $parameter1;
+
+    // 2
+    /**
+     * @example 2
+     * @var int
+     */
+    public $parameter2;
+
+    // 3
+    /**
+     * @example 3
+     * @var int
+     */
+    public $parameter3;
+
+    // 4
+    /**
+     * @example 4
+     * @var int
+     */
+    public $parameter4;
+
+    // 5
+    /**
+     * @example 5
+     * @var DemoClass
+     */
+    public $parameter5;
+
 }

@@ -1,13 +1,49 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace AntChain\DEMO\Models;
 
 use AlibabaCloud\Tea\Model;
 
-class QueryIpRetryRequest extends Model
-{
+class QueryIpRetryRequest extends Model {
+    protected $_name = [
+        'authToken' => 'auth_token',
+        'productInstanceId' => 'product_instance_id',
+        'timeout' => 'timeout',
+    ];
+    public function validate() {
+        Model::validateRequired('timeout', $this->timeout, true);
+    }
+    public function toMap() {
+        $res = [];
+        if (null !== $this->authToken) {
+            $res['auth_token'] = $this->authToken;
+        }
+        if (null !== $this->productInstanceId) {
+            $res['product_instance_id'] = $this->productInstanceId;
+        }
+        if (null !== $this->timeout) {
+            $res['timeout'] = $this->timeout;
+        }
+        return $res;
+    }
+    /**
+     * @param array $map
+     * @return QueryIpRetryRequest
+     */
+    public static function fromMap($map = []) {
+        $model = new self();
+        if(isset($map['auth_token'])){
+            $model->authToken = $map['auth_token'];
+        }
+        if(isset($map['product_instance_id'])){
+            $model->productInstanceId = $map['product_instance_id'];
+        }
+        if(isset($map['timeout'])){
+            $model->timeout = $map['timeout'];
+        }
+        return $model;
+    }
     // OAuth模式下的授权token
     /**
      * @var string
@@ -24,51 +60,5 @@ class QueryIpRetryRequest extends Model
      * @var string
      */
     public $timeout;
-    protected $_name = [
-        'authToken'         => 'auth_token',
-        'productInstanceId' => 'product_instance_id',
-        'timeout'           => 'timeout',
-    ];
 
-    public function validate()
-    {
-        Model::validateRequired('timeout', $this->timeout, true);
-    }
-
-    public function toMap()
-    {
-        $res = [];
-        if (null !== $this->authToken) {
-            $res['auth_token'] = $this->authToken;
-        }
-        if (null !== $this->productInstanceId) {
-            $res['product_instance_id'] = $this->productInstanceId;
-        }
-        if (null !== $this->timeout) {
-            $res['timeout'] = $this->timeout;
-        }
-
-        return $res;
-    }
-
-    /**
-     * @param array $map
-     *
-     * @return QueryIpRetryRequest
-     */
-    public static function fromMap($map = [])
-    {
-        $model = new self();
-        if (isset($map['auth_token'])) {
-            $model->authToken = $map['auth_token'];
-        }
-        if (isset($map['product_instance_id'])) {
-            $model->productInstanceId = $map['product_instance_id'];
-        }
-        if (isset($map['timeout'])) {
-            $model->timeout = $map['timeout'];
-        }
-
-        return $model;
-    }
 }

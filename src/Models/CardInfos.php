@@ -1,41 +1,22 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace AntChain\DEMO\Models;
 
 use AlibabaCloud\Tea\Model;
 
-class CardInfos extends Model
-{
-    // x
-    /**
-     * @example
-     *
-     * @var Identity
-     */
-    public $domianInfo;
+use AntChain\DEMO\Models\Identity;
 
-    // 12
-    /**
-     * @example 张三
-     *
-     * @var string
-     */
-    public $test;
+class CardInfos extends Model {
     protected $_name = [
         'domianInfo' => 'domian_info',
-        'test'       => 'test',
+        'test' => 'test',
     ];
-
-    public function validate()
-    {
+    public function validate() {
         Model::validateRequired('domianInfo', $this->domianInfo, true);
         Model::validateRequired('test', $this->test, true);
     }
-
-    public function toMap()
-    {
+    public function toMap() {
         $res = [];
         if (null !== $this->domianInfo) {
             $res['domian_info'] = null !== $this->domianInfo ? $this->domianInfo->toMap() : null;
@@ -43,25 +24,34 @@ class CardInfos extends Model
         if (null !== $this->test) {
             $res['test'] = $this->test;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return CardInfos
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['domian_info'])) {
+        if(isset($map['domian_info'])){
             $model->domianInfo = Identity::fromMap($map['domian_info']);
         }
-        if (isset($map['test'])) {
+        if(isset($map['test'])){
             $model->test = $map['test'];
         }
-
         return $model;
     }
+    // x
+    /**
+     * @example 
+     * @var Identity
+     */
+    public $domianInfo;
+
+    // 12
+    /**
+     * @example 张三
+     * @var string
+     */
+    public $test;
+
 }

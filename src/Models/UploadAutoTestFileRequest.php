@@ -1,65 +1,23 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace AntChain\DEMO\Models;
 
 use AlibabaCloud\Tea\Model;
 use GuzzleHttp\Psr7\Stream;
 
-class UploadAutoTestFileRequest extends Model
-{
-    // OAuth模式下的授权token
-    /**
-     * @var string
-     */
-    public $authToken;
-
-    /**
-     * @var string
-     */
-    public $productInstanceId;
-
-    // fileId
-    /**
-     * @description 待上传文件
-     *
-     * @var Stream
-     */
-    public $fileObject;
-
-    /**
-     * @description 待上传文件名
-     *
-     * @var string
-     */
-    public $fileObjectName;
-
-    /**
-     * @var string
-     */
-    public $fileId;
-
-    // 超时时间
-    /**
-     * @var string
-     */
-    public $timeout;
+class UploadAutoTestFileRequest extends Model {
     protected $_name = [
-        'authToken'         => 'auth_token',
+        'authToken' => 'auth_token',
         'productInstanceId' => 'product_instance_id',
-        'fileId'            => 'file_id',
-        'timeout'           => 'timeout',
+        'fileId' => 'file_id',
+        'timeout' => 'timeout',
     ];
-
-    public function validate()
-    {
+    public function validate() {
         Model::validateRequired('fileId', $this->fileId, true);
         Model::validateRequired('timeout', $this->timeout, true);
     }
-
-    public function toMap()
-    {
+    public function toMap() {
         $res = [];
         if (null !== $this->authToken) {
             $res['auth_token'] = $this->authToken;
@@ -79,37 +37,67 @@ class UploadAutoTestFileRequest extends Model
         if (null !== $this->timeout) {
             $res['timeout'] = $this->timeout;
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return UploadAutoTestFileRequest
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['auth_token'])) {
+        if(isset($map['auth_token'])){
             $model->authToken = $map['auth_token'];
         }
-        if (isset($map['product_instance_id'])) {
+        if(isset($map['product_instance_id'])){
             $model->productInstanceId = $map['product_instance_id'];
         }
-        if (isset($map['fileObject'])) {
+        if(isset($map['fileObject'])){
             $model->fileObject = $map['fileObject'];
         }
-        if (isset($map['fileObjectName'])) {
+        if(isset($map['fileObjectName'])){
             $model->fileObjectName = $map['fileObjectName'];
         }
-        if (isset($map['file_id'])) {
+        if(isset($map['file_id'])){
             $model->fileId = $map['file_id'];
         }
-        if (isset($map['timeout'])) {
+        if(isset($map['timeout'])){
             $model->timeout = $map['timeout'];
         }
-
         return $model;
     }
+    // OAuth模式下的授权token
+    /**
+     * @var string
+     */
+    public $authToken;
+
+    /**
+     * @var string
+     */
+    public $productInstanceId;
+
+    // fileId
+    /**
+     * @description 待上传文件
+     * @var Stream
+     */
+    public $fileObject;
+
+    /**
+     * @description 待上传文件名
+     * @var string
+     */
+    public $fileObjectName;
+
+    /**
+     * @var string
+     */
+    public $fileId;
+
+    // 超时时间
+    /**
+     * @var string
+     */
+    public $timeout;
+
 }

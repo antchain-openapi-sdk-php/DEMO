@@ -1,51 +1,24 @@
 <?php
 
 // This file is auto-generated, don't edit it. Thanks.
-
 namespace AntChain\DEMO\Models;
 
 use AlibabaCloud\Tea\Model;
 
-class TestStruct extends Model
-{
-    // x
-    /**
-     * @example x
-     *
-     * @var string
-     */
-    public $x;
+use AntChain\DEMO\Models\DemoClass;
 
-    // y
-    /**
-     * @example y
-     *
-     * @var DemoClass
-     */
-    public $y;
-
-    // z
-    /**
-     * @example
-     *
-     * @var DemoClass[]
-     */
-    public $z;
+class TestStruct extends Model {
     protected $_name = [
         'x' => 'x',
         'y' => 'y',
         'z' => 'z',
     ];
-
-    public function validate()
-    {
+    public function validate() {
         Model::validateRequired('x', $this->x, true);
         Model::validateRequired('y', $this->y, true);
         Model::validateRequired('z', $this->z, true);
     }
-
-    public function toMap()
-    {
+    public function toMap() {
         $res = [];
         if (null !== $this->x) {
             $res['x'] = $this->x;
@@ -55,41 +28,57 @@ class TestStruct extends Model
         }
         if (null !== $this->z) {
             $res['z'] = [];
-            if (null !== $this->z && \is_array($this->z)) {
+            if(null !== $this->z && is_array($this->z)){
                 $n = 0;
-                foreach ($this->z as $item) {
+                foreach($this->z as $item){
                     $res['z'][$n++] = null !== $item ? $item->toMap() : $item;
                 }
             }
         }
-
         return $res;
     }
-
     /**
      * @param array $map
-     *
      * @return TestStruct
      */
-    public static function fromMap($map = [])
-    {
+    public static function fromMap($map = []) {
         $model = new self();
-        if (isset($map['x'])) {
+        if(isset($map['x'])){
             $model->x = $map['x'];
         }
-        if (isset($map['y'])) {
+        if(isset($map['y'])){
             $model->y = DemoClass::fromMap($map['y']);
         }
-        if (isset($map['z'])) {
-            if (!empty($map['z'])) {
+        if(isset($map['z'])){
+            if(!empty($map['z'])){
                 $model->z = [];
-                $n        = 0;
-                foreach ($map['z'] as $item) {
+                $n = 0;
+                foreach($map['z'] as $item) {
                     $model->z[$n++] = null !== $item ? DemoClass::fromMap($item) : $item;
                 }
             }
         }
-
         return $model;
     }
+    // x
+    /**
+     * @example x
+     * @var string
+     */
+    public $x;
+
+    // y
+    /**
+     * @example y
+     * @var DemoClass
+     */
+    public $y;
+
+    // z
+    /**
+     * @example 
+     * @var DemoClass[]
+     */
+    public $z;
+
 }
